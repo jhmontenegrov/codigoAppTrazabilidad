@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SalidaProducto1" pageWidth="612" pageHeight="792" columnWidth="528" leftMargin="42" rightMargin="42" topMargin="42" bottomMargin="42" uuid="1e96c90c-44c8-4e84-a05b-b53adfc25079">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MysqlDriver"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="salProdId" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[$F{Salida_productoID}]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[SELECT db_proyecto_trazabilidad.salida_producto.`Cant_salidap`,
+	db_proyecto_trazabilidad.salida_producto.`Fech_salidap`,
+	db_proyecto_trazabilidad.salida_producto.`Salida_productoID`,
+	db_proyecto_trazabilidad.salida_producto.`MediostransporteID`,
+	db_proyecto_trazabilidad.usuario.`Nombre`,
+	db_proyecto_trazabilidad.usuario.`Apellido`,
+	db_proyecto_trazabilidad.salida_producto.`UsuarioID`,
+	db_proyecto_trazabilidad.salida_producto.`InventarioID`,
+	db_proyecto_trazabilidad.inventario.`Cantidad`,
+	db_proyecto_trazabilidad.inventario.`Observacion`,
+	db_proyecto_trazabilidad.inventario.`AlmacenID`,
+	db_proyecto_trazabilidad.almacen.`Ubicacion`,
+	db_proyecto_trazabilidad.almacen.`CiudadID`,
+	db_proyecto_trazabilidad.ciudad.`Pais`,
+	db_proyecto_trazabilidad.ciudad.`Ciudad_nombre`,
+	db_proyecto_trazabilidad.mediostransporte.`Placa`,
+	db_proyecto_trazabilidad.producto.`Nom_producto`,
+	db_proyecto_trazabilidad.producto.lote,
+	db_proyecto_trazabilidad.producto.`Marca`
+FROM db_proyecto_trazabilidad.salida_producto
+	INNER JOIN db_proyecto_trazabilidad.usuario ON 
+	 db_proyecto_trazabilidad.salida_producto.`UsuarioID` = db_proyecto_trazabilidad.usuario.`UsuarioID` 
+	INNER JOIN db_proyecto_trazabilidad.inventario ON 
+	 db_proyecto_trazabilidad.salida_producto.`InventarioID` = db_proyecto_trazabilidad.inventario.`InventarioID` 
+	INNER JOIN db_proyecto_trazabilidad.almacen ON 
+	 db_proyecto_trazabilidad.inventario.`AlmacenID` = db_proyecto_trazabilidad.almacen.`AlmacenID` 
+	INNER JOIN db_proyecto_trazabilidad.ciudad ON 
+	 db_proyecto_trazabilidad.almacen.`CiudadID` = db_proyecto_trazabilidad.ciudad.`CiudadID` 
+	INNER JOIN db_proyecto_trazabilidad.mediostransporte ON 
+	 db_proyecto_trazabilidad.salida_producto.`MediostransporteID` = db_proyecto_trazabilidad.mediostransporte.`MediostransporteID` 
+	INNER JOIN db_proyecto_trazabilidad.producto ON 
+	 db_proyecto_trazabilidad.inventario.`ProductoID` = db_proyecto_trazabilidad.producto.`ProductoID` 
+WHERE 
+	 db_proyecto_trazabilidad.salida_producto.`Salida_productoID` = $P{salProdId}]]>
+	</queryString>
+	<field name="Cant_salidap" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="Cant_salidap"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="salida_producto"/>
+	</field>
+	<field name="Fech_salidap" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="Fech_salidap"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="salida_producto"/>
+	</field>
+	<field name="Salida_productoID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="Salida_productoID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="salida_producto"/>
+	</field>
+	<field name="MediostransporteID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="MediostransporteID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="salida_producto"/>
+	</field>
+	<field name="Nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+	</field>
+	<field name="Apellido" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Apellido"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+	</field>
+	<field name="UsuarioID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="UsuarioID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="salida_producto"/>
+	</field>
+	<field name="InventarioID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="InventarioID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="salida_producto"/>
+	</field>
+	<field name="Cantidad" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="Cantidad"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventario"/>
+	</field>
+	<field name="Observacion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Observacion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventario"/>
+	</field>
+	<field name="AlmacenID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="AlmacenID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventario"/>
+	</field>
+	<field name="Ubicacion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Ubicacion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="almacen"/>
+	</field>
+	<field name="CiudadID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="CiudadID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="almacen"/>
+	</field>
+	<field name="Pais" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Pais"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ciudad"/>
+	</field>
+	<field name="Ciudad_nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Ciudad_nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ciudad"/>
+	</field>
+	<field name="Placa" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Placa"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mediostransporte"/>
+	</field>
+	<field name="Nom_producto" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Nom_producto"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto"/>
+	</field>
+	<field name="lote" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="lote"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto"/>
+	</field>
+	<field name="Marca" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Marca"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="127" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="530" height="95" forecolor="#EBEBEB" backcolor="#FFFFFF" uuid="83d4fb2d-9f54-439b-8fa0-443f40561af3"/>
+				<staticText>
+					<reportElement x="0" y="0" width="370" height="66" uuid="b31996ba-288d-4054-b0b5-c9a5bdd86610"/>
+					<textElement>
+						<font size="25" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Sistema de trazabilidad]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="157" y="66" width="193" height="29" uuid="bc5252d4-8e04-4e98-9889-ab87df5d99d7"/>
+					<textElement>
+						<font size="22" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Salida del producto]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="350" y="65" width="100" height="30" uuid="c3dd475a-94ee-4c62-b657-9b8bf696b514"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="22"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Nom_producto}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="95" width="530" height="32" forecolor="#000000" backcolor="#CC0000" uuid="0a1ecd03-ea94-4883-a7cd-cc56ab883d2d"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="307" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="338f3039-baaf-4587-b626-f216a5626226"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<detail>
+		<band height="278" splitType="Stretch">
+			<textField>
+				<reportElement x="380" y="20" width="100" height="30" uuid="fad573de-49a6-41e6-9cd2-0ab198928509"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Salida_productoID}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="330" y="20" width="50" height="30" uuid="c413f648-e129-420e-85d4-df9169a36069"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="20" width="50" height="30" uuid="1e73896e-34db-4bf6-85cb-2fb69a676baf"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Fech_salidap}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="20" width="100" height="30" uuid="318d6356-5025-44d5-9427-2ea940a9897b"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de salida]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="130" width="90" height="30" uuid="1aaa8d48-a367-416f-bd76-1ec1dbdf2369"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Producto:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="90" y="70" width="100" height="30" uuid="66ff3cae-d30a-4dfc-944c-f85a5d275a3c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Ubicacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="70" width="90" height="30" uuid="a310386b-6c6b-48f6-8c24-199acafd4bbb"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ubicación:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="290" y="70" width="100" height="30" uuid="c62f2053-53ad-4564-a688-9b2c01af13de"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Pais}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="190" y="70" width="100" height="30" uuid="f59d417c-db04-408d-801a-5f9b6feec5b1"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Ciudad_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="180" width="100" height="30" uuid="cd8d961c-f5c1-4f27-86cb-ace5cd6b7241"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Cant_salidap}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="180" width="90" height="30" uuid="f7b1c9fd-8b63-4ccf-bdb9-e86160c19b24"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="90" y="230" width="100" height="30" uuid="f2d4e377-4e77-4186-84f2-03164616ee04"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="230" width="90" height="30" uuid="3bf3d700-f5c1-4887-b22f-9d11e63bee22"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Responsable:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="190" y="230" width="100" height="30" uuid="caf5daae-865f-4337-917c-0e5d27c69496"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Apellido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="190" y="130" width="100" height="30" uuid="b7387fbd-45d7-4a0e-be92-368d7c0afa13"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Marca}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="290" y="130" width="100" height="30" uuid="b2b868fc-2c41-4069-8882-50b660853ea8"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lote}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="130" width="100" height="30" uuid="5c76edb7-bc64-48c3-abd1-db32341d6480"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Nom_producto}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="50" splitType="Stretch">
+			<textField>
+				<reportElement x="170" y="20" width="100" height="30" uuid="70996ef7-9074-4499-9039-89b167061746"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="270" y="20" width="100" height="30" uuid="3218f433-1ce6-4fca-98a4-cd91fbc72d6b"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

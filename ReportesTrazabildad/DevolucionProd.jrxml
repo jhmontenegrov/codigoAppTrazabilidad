@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DevolucionProd" pageWidth="612" pageHeight="792" columnWidth="528" leftMargin="42" rightMargin="42" topMargin="42" bottomMargin="42" uuid="c6f3db75-f2a0-4849-bf31-e934fcd4a600">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MysqlDriver"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="devProdId" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT db_proyecto_trazabilidad.almacen.`Ubicacion`,
+	db_proyecto_trazabilidad.devolucion.`Cant_devolucion`,
+	db_proyecto_trazabilidad.devolucion.`Fech_devolucion`,
+	db_proyecto_trazabilidad.devolucion.`DevolucionID`,
+	db_proyecto_trazabilidad.devolucion.`EstadoID`,
+	db_proyecto_trazabilidad.devolucion.`InventarioID`,
+	db_proyecto_trazabilidad.almacen.`EstablecimientoID`,
+	db_proyecto_trazabilidad.inventario.`InventarioID`,
+	db_proyecto_trazabilidad.inventario.`Cantidad`,
+	db_proyecto_trazabilidad.inventario.`Observacion`,
+	db_proyecto_trazabilidad.establecimiento.`Ubicaciontienda`,
+	db_proyecto_trazabilidad.almacen.`AlmacenID`,
+	db_proyecto_trazabilidad.almacen.`Ubicacion`,
+	db_proyecto_trazabilidad.establecimiento.`CiudadID`,
+	db_proyecto_trazabilidad.almacen.`EstablecimientoID`,
+	db_proyecto_trazabilidad.producto.`Nom_producto`,
+	db_proyecto_trazabilidad.producto.`Marca`,
+	db_proyecto_trazabilidad.producto.lote,
+	db_proyecto_trazabilidad.usuario.`Nombre`,
+	db_proyecto_trazabilidad.usuario.`Apellido`,
+	db_proyecto_trazabilidad.usuario.`UsuarioID`,
+	db_proyecto_trazabilidad.ciudad.`Ciudad_nombre`,
+	db_proyecto_trazabilidad.ciudad.`Pais`
+FROM db_proyecto_trazabilidad.devolucion
+	INNER JOIN db_proyecto_trazabilidad.inventario ON 
+	 db_proyecto_trazabilidad.devolucion.`InventarioID` = db_proyecto_trazabilidad.inventario.`InventarioID` 
+	INNER JOIN db_proyecto_trazabilidad.almacen ON 
+	 db_proyecto_trazabilidad.inventario.`AlmacenID` = db_proyecto_trazabilidad.almacen.`AlmacenID` 
+	INNER JOIN db_proyecto_trazabilidad.establecimiento ON 
+	 db_proyecto_trazabilidad.almacen.`EstablecimientoID` = db_proyecto_trazabilidad.establecimiento.`EstablecimientoID` 
+	INNER JOIN db_proyecto_trazabilidad.producto ON 
+	 db_proyecto_trazabilidad.inventario.`ProductoID` = db_proyecto_trazabilidad.producto.`ProductoID` 
+	INNER JOIN db_proyecto_trazabilidad.usuario ON 
+	 db_proyecto_trazabilidad.devolucion.`UsuarioID` = db_proyecto_trazabilidad.usuario.`UsuarioID` 
+	INNER JOIN db_proyecto_trazabilidad.ciudad ON 
+	 db_proyecto_trazabilidad.establecimiento.`CiudadID` = db_proyecto_trazabilidad.ciudad.`CiudadID` 
+WHERE 
+	 $P{devProdId} = db_proyecto_trazabilidad.devolucion.`DevolucionID`]]>
+	</queryString>
+	<field name="Ubicacion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Ubicacion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="almacen"/>
+	</field>
+	<field name="Cant_devolucion" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="Cant_devolucion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="devolucion"/>
+	</field>
+	<field name="Fech_devolucion" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="Fech_devolucion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="devolucion"/>
+	</field>
+	<field name="DevolucionID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="DevolucionID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="devolucion"/>
+	</field>
+	<field name="EstadoID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="EstadoID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="devolucion"/>
+	</field>
+	<field name="InventarioID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="InventarioID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="devolucion"/>
+	</field>
+	<field name="EstablecimientoID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="EstablecimientoID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="almacen"/>
+	</field>
+	<field name="COLUMN_8" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="InventarioID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventario"/>
+	</field>
+	<field name="Cantidad" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="Cantidad"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventario"/>
+	</field>
+	<field name="Observacion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Observacion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventario"/>
+	</field>
+	<field name="Ubicaciontienda" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Ubicaciontienda"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="establecimiento"/>
+	</field>
+	<field name="AlmacenID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="AlmacenID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="almacen"/>
+	</field>
+	<field name="COLUMN_13" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Ubicacion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="almacen"/>
+	</field>
+	<field name="CiudadID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="CiudadID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="establecimiento"/>
+	</field>
+	<field name="COLUMN_15" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="EstablecimientoID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="almacen"/>
+	</field>
+	<field name="Nom_producto" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Nom_producto"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto"/>
+	</field>
+	<field name="Marca" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Marca"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto"/>
+	</field>
+	<field name="lote" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="lote"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto"/>
+	</field>
+	<field name="Nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+	</field>
+	<field name="Apellido" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Apellido"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+	</field>
+	<field name="UsuarioID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="UsuarioID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+	</field>
+	<field name="Ciudad_nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Ciudad_nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ciudad"/>
+	</field>
+	<field name="Pais" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Pais"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ciudad"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="127" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="530" height="95" forecolor="#EBEBEB" backcolor="#FFFFFF" uuid="0850f2c8-a95c-44de-8587-00e88538b2c1"/>
+				<staticText>
+					<reportElement x="0" y="0" width="370" height="66" uuid="10bf4496-0118-4a51-b02a-ce7e2673478e"/>
+					<textElement>
+						<font size="25" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Sistema de trazabilidad]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="157" y="66" width="249" height="29" uuid="513a5fae-a3b6-4a5b-bed4-7dc16909d710"/>
+					<textElement>
+						<font size="22" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Lista de productos]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="95" width="530" height="32" forecolor="#000000" backcolor="#CC0000" uuid="f70030db-7264-4502-87ab-4421357fa5f0"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="307" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="8baadd64-5011-4986-9ceb-61dcd3e396f7"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<detail>
+		<band height="233" splitType="Stretch">
+			<staticText>
+				<reportElement x="20" y="50" width="110" height="30" uuid="43eddb08-70e8-4d3a-836d-2bc24c3b0de8"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de entrada:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="90" width="80" height="30" uuid="f54d4524-481d-40a6-8315-18a1b36b4715"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ubicación:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="127" width="80" height="30" uuid="c64bb345-77df-4758-8023-5ff862d225cc"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Producto:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="195" width="90" height="30" uuid="72a1c639-896b-4922-8dc2-22e0292e5571"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Responsable:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="160" width="80" height="30" uuid="00c2cc8b-29cd-4863-a568-1838a80aa1c2"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="350" y="50" width="50" height="30" uuid="10728b23-6f10-4a28-ae17-af7be1b165ca"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="50" width="50" height="30" uuid="7cceffce-9e35-482d-aa59-afd75439e909"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Fech_devolucion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="90" width="100" height="30" uuid="2f0432ed-ba48-4e06-bac6-9b7cea149fb0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Ubicaciontienda}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="90" width="100" height="30" uuid="c7bda29e-8a67-4996-9e97-0ebe846b6a66"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Ciudad_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="90" width="100" height="30" uuid="3106b871-7b6f-449e-bf48-b732e931cd46"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Pais}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="127" width="100" height="30" uuid="3501d762-5447-47a3-b834-c329c997ed2f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Nom_producto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="127" width="100" height="30" uuid="04bf507b-39f2-4777-9142-cdc8d79595c9"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Marca}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="127" width="100" height="30" uuid="91390b9b-f1e0-47ee-bb28-b3a42dd94be0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lote}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="160" width="100" height="30" uuid="cce42eda-3429-43cf-9eaf-a032dbbc01e5"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Cant_devolucion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="195" width="70" height="30" uuid="f5c4b706-9df8-451e-9957-208d721b19e7"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="195" width="100" height="30" uuid="d7785027-31b3-4eea-ba72-bf8d3b7c9275"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Apellido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="50" width="100" height="30" uuid="ee4c7cc9-f72e-414a-af70-2281bbcc82ce"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DevolucionID}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="55" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="260" y="20" width="100" height="30" uuid="c0bd6e59-db2f-458f-90f6-ed3800a39550"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="20" width="100" height="30" uuid="d0159b29-ed47-4ea8-b2eb-39d7174a843e"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="pedidos" pageWidth="612" pageHeight="792" columnWidth="528" leftMargin="42" rightMargin="42" topMargin="42" bottomMargin="42" uuid="353386f8-4bf6-4934-810c-b2afd2ebe4f6">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[ZGJfcHJveWVjdG9fdHJhemFiaWxpZGFkLnByb3ZlZWRvciAsMTc5LDE1LDhkOTIxYzQ4LWQ5ZTIt
+NGYyZS04YzlmLTU4YzRlYmQzMzNmOTtkYl9wcm95ZWN0b190cmF6YWJpbGlkYWQudXN1YXJpbyAs
+MTc5LDIzNiwzOWViNTM4My00ZDFiLTQ4N2UtYjU5Yi1mZTFhODJhMmMxNzI7ZGJfcHJveWVjdG9f
+dHJhemFiaWxpZGFkLnJlcXVpc2ljaW9uICwxNSwxMzEsODQ3YzVlOWMtMTJkOC00NTkyLWEzNDEt
+YjMzNTlkNjU0MDZkOw==]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MysqlDriver"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="199"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="801"/>
+	<parameter name="idPedido" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT db_proyecto_trazabilidad.requisicion.`Nombre_producto`,
+	db_proyecto_trazabilidad.requisicion.`Fecha_solicitud`,
+	db_proyecto_trazabilidad.requisicion.`Cantidad`,
+	db_proyecto_trazabilidad.requisicion.`Observacion`,
+	db_proyecto_trazabilidad.requisicion.`RequisicionID`,
+	db_proyecto_trazabilidad.proveedor.`Nom_proveedor`,
+	db_proyecto_trazabilidad.usuario.`Nombre`,
+	db_proyecto_trazabilidad.usuario.`UsuarioID`,
+	db_proyecto_trazabilidad.usuario.`Apellido`,
+	db_proyecto_trazabilidad.proveedor.`ProveedorID`
+FROM db_proyecto_trazabilidad.requisicion
+	INNER JOIN db_proyecto_trazabilidad.proveedor ON 
+	 db_proyecto_trazabilidad.requisicion.`ProveedorID` = db_proyecto_trazabilidad.proveedor.`ProveedorID` 
+	INNER JOIN db_proyecto_trazabilidad.usuario ON 
+	 db_proyecto_trazabilidad.requisicion.`UsuarioID` = db_proyecto_trazabilidad.usuario.`UsuarioID` 
+WHERE 
+	 db_proyecto_trazabilidad.requisicion.`RequisicionID` = $P{idPedido}]]>
+	</queryString>
+	<field name="Nombre_producto" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Nombre_producto"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="requisicion"/>
+	</field>
+	<field name="Fecha_solicitud" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="Fecha_solicitud"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="requisicion"/>
+	</field>
+	<field name="Cantidad" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="Cantidad"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="requisicion"/>
+	</field>
+	<field name="Observacion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Observacion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="requisicion"/>
+	</field>
+	<field name="RequisicionID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="RequisicionID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="requisicion"/>
+	</field>
+	<field name="Nom_proveedor" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Nom_proveedor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="proveedor"/>
+	</field>
+	<field name="Nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+	</field>
+	<field name="UsuarioID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="UsuarioID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+	</field>
+	<field name="Apellido" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Apellido"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+	</field>
+	<field name="ProveedorID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="ProveedorID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="proveedor"/>
+	</field>
+	<group name="Nombre_producto">
+		<groupExpression><![CDATA[$F{Nombre_producto}]]></groupExpression>
+	</group>
+	<group name="Fecha_solicutud">
+		<groupExpression><![CDATA[$F{Fecha_solicitud}]]></groupExpression>
+	</group>
+	<group name="Cantidad">
+		<groupExpression><![CDATA[$F{Cantidad}]]></groupExpression>
+	</group>
+	<group name="Observacion">
+		<groupExpression><![CDATA[$F{Observacion}]]></groupExpression>
+	</group>
+	<group name="RequisicionID">
+		<groupExpression><![CDATA[$F{RequisicionID}]]></groupExpression>
+	</group>
+	<group name="Nom_proveedor">
+		<groupExpression><![CDATA[$F{Nom_proveedor}]]></groupExpression>
+	</group>
+	<group name="Nombre">
+		<groupExpression><![CDATA[$F{Nombre}]]></groupExpression>
+	</group>
+	<group name="UsuarioID">
+		<groupExpression><![CDATA[$F{UsuarioID}]]></groupExpression>
+	</group>
+	<group name="Apellido">
+		<groupExpression><![CDATA[$F{Apellido}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="127" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="530" height="95" forecolor="#EBEBEB" backcolor="#FFFFFF" uuid="35ee9a8c-0830-418a-a4bb-3f5d23ef732b"/>
+				<staticText>
+					<reportElement x="0" y="0" width="370" height="66" uuid="3af459c5-381f-4e70-bcec-b2c3d2491ab5"/>
+					<textElement>
+						<font size="25" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Sistema de trazabilidad]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="157" y="66" width="249" height="29" uuid="dabf521f-4e28-40ff-8206-34644bd7f899"/>
+					<textElement>
+						<font size="22" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Pedido de un producto]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="95" width="530" height="32" forecolor="#000000" backcolor="#CC0000" uuid="a7758add-3bfc-455d-a3d5-ccd25509e73d"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="307" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="87fb2267-4c85-4c8b-a953-ee9206428570"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="90" splitType="Stretch">
+			<staticText>
+				<reportElement x="170" y="40" width="170" height="30" uuid="8660af39-16d5-4ed6-9197-442c61c1ac88"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Resumen de la solicitud]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="52" splitType="Stretch">
+			<staticText>
+				<reportElement x="94" y="0" width="100" height="30" uuid="86dda49e-67a6-4094-a816-5bf850f5f921">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4f9bee8e-1273-41a9-b81b-b2b3a767a959"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre producto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="194" y="0" width="90" height="30" uuid="7f70302b-88d4-4724-bb32-9a0080d75e91">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d83e5c6d-bbf4-4b86-a164-da84ee3678f3"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="284" y="0" width="100" height="30" uuid="2083c0e8-5666-44d9-81ea-b7792851b9eb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fede33e4-8812-49b7-a1ee-e4ea2ed5e7e6"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha solicitud]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="384" y="0" width="100" height="30" uuid="78464f9e-0c75-42d6-bbea-1c6092c79d73">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7fccadea-8eec-48d7-8af9-fb4ae9383c57"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Proveedor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="0" width="80" height="30" uuid="43a95e06-53ae-43bf-b068-7c6d3873b60a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="12053937-361a-417e-bfbd-d05f57cc0a87"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Id]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="130" splitType="Stretch">
+			<textField>
+				<reportElement x="94" y="-1" width="100" height="30" uuid="8e01a58d-5e13-4753-bffa-b9b318b90520">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4f9bee8e-1273-41a9-b81b-b2b3a767a959"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Nombre_producto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="194" y="-1" width="90" height="30" uuid="f6675203-ee29-422f-a506-5bb2b289369a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d83e5c6d-bbf4-4b86-a164-da84ee3678f3"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="304" y="0" width="60" height="30" uuid="c54ca13a-5a95-4908-814b-0bd77805373d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fede33e4-8812-49b7-a1ee-e4ea2ed5e7e6"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Fecha_solicitud}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="384" y="0" width="100" height="30" uuid="1edc94d3-2044-421e-8647-43779bb5373a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7fccadea-8eec-48d7-8af9-fb4ae9383c57"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Nom_proveedor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="14" y="-1" width="80" height="30" uuid="a8267648-a252-479a-a69f-4fad8a03b951">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="12053937-361a-417e-bfbd-d05f57cc0a87"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RequisicionID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="134" y="100" width="260" height="30" uuid="ab2bbacb-12ef-4936-83a4-079491fcfb4c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0e1266c6-b2a1-4778-8779-6cc5c63cf99a"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Observacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="14" y="100" width="120" height="30" uuid="0c4acc9f-6cb9-45a4-87b9-b7b61a1bb6f4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0e1266c6-b2a1-4778-8779-6cc5c63cf99a"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Observación:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="134" y="60" width="90" height="30" uuid="b7c28c22-246a-472c-a2a0-afdaec9e08ab">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b417b486-1c8c-4f70-84d5-65ff8796caff"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="14" y="60" width="120" height="30" uuid="a2fae8e9-596e-41df-9a44-9821dee5de76">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b417b486-1c8c-4f70-84d5-65ff8796caff"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Responsable:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="224" y="60" width="70" height="30" uuid="0a8ed5a7-0dfd-471b-8a5f-faf26eb94376">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8ed92545-d9d8-4165-9813-daca6b4e3950"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Apellido}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="31" splitType="Stretch">
+			<textField>
+				<reportElement x="320" y="0" width="100" height="30" uuid="f5455f93-1d02-4ec8-853a-cb5ddf41c362"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="350" y="0" width="100" height="30" uuid="016e0bd4-a52e-4a14-953a-334e58a87539"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="0" y="0" width="100" height="30" uuid="4623c577-8dfc-49a6-b85a-c7e064e4f898"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
